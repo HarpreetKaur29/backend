@@ -12,6 +12,10 @@ const PORT = process.env.PORT
 app.use(express.json())
 app.use(cors())
 
+app.get("/health", (req, res)=> {
+    return res.send("API is healthy...");
+})
+
 //routes
 readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
 
